@@ -22,7 +22,7 @@ session_start();        // then boot the session
 
 ## Tell PHP which variables to keep track when packing the object
 PHP provides two hooks for classes that notify their objects that they're being serialized.  
-These are the functions **__wakeup()** and **__ sleep() **.
+These are the functions **__wakeup()** and **__ sleep()**.
 ### Sleep Hook
 Called just before serialization. It's the opportunity to perform cleanups, close database connections, etc.
 It should return an array containing the names of the object's properties that you want to be written into the bytestream.
