@@ -4,14 +4,14 @@ Under the hood, PHP's session handle the process of serialization an unserializa
 
 ## Purpose of serialization
 Serialization means convert an object to a bytestream to be stored in a file or database.  
-If you want make objects persistent, **serialize() and **unserialize()** are the functions.
+If you want make objects persistent, **serialize()** and **unserialize()** are the functions.
 ```
 $encoded = serialize(something);
 $something = unserialize(encoded);
 ```
 
 ## Load classes definitions before unserialize
-In this project a log object was injected in PHP Session logger variable.
+In this project a log object was injected in PHP Session logger variable.  
 In the 'next.php' page is vital to load the Log class before session initialization.
 ```
 include_once "Log.php"; // load class definitions first
@@ -21,8 +21,8 @@ session_start();        // then boot the session
 ```
 
 ## Tell PHP which variables to keep track when packing the object
-PHP provides two hooks for classes that notify their objects that they're being serialized.
-These are the functions ** __ wakeup () ** and ** __ sleep () **.
+PHP provides two hooks for classes that notify their objects that they're being serialized.  
+These are the functions **__wakeup()** and **__ sleep() **.
 ### Sleep Hook
 Called just before serialization. It's the opportunity to perform cleanups, close database connections, etc.
 It should return an array containing the names of the object's properties that you want to be written into the bytestream.
@@ -38,5 +38,5 @@ public function __sleep()
 }
 ```
 ### Wakeup Hook
-Called immediately after an object is created from a bytestream. A good opportunity for initialization tasks like opening database connections, etc.
+Called immediately after an object is created from a bytestream. A good opportunity for initialization tasks like opening database connections, etc.  
 In this project the hook reopens the log text file.
