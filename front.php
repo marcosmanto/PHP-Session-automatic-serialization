@@ -28,7 +28,7 @@ $logger->teste = "**********[TESTE]***********";
 Kint::dump($logger);
 $logger->write("Viewed first page {$now}");
 echo "<p>The log contains:</p>";
-//echo nl2br($logger->read());
+echo nl2br($logger->read());
 echo "<br>" . session_save_path() . "<br>";
 ?>
   <a href="next.php">Move to the next page</a>
